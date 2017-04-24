@@ -1,0 +1,12 @@
+@font-face{
+	font-family: "MmrReg";
+	src:url("mmrtext.ttf");
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face{
+	font-family: "MmrBold";
+	src:url("mmrtextb.ttf");
+	font-weight: normal;
+	font-style: normal;
+}
