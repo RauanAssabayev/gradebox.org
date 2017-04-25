@@ -1,3 +1,32 @@
+<?
+require "orm.php";
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+  if(isset($_POST['reg'])){
+      $user = R::getAll('select * from users where email= :login',
+      array(':login'=>$_POST['email']));
+      if(!$user){
+        $_SESSION['email'] = $_POST['email'];
+        $users = R::dispense('users');
+        $users->firstname = $_POST['firstname'];
+        $users->lastname = $_POST['lastname'];
+        $users->type = 2;
+        $users->email = $_POST['email'];
+        $users->password = md5($_POST['password']);
+        R::store($users);
+        header('Location: stream.php');
+      }else{
+        echo "<script> alert('Пользователь с таким именем уже существует'); </script>";
+      }
+  }
+}
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru-RU">
   <head>
@@ -25,7 +54,7 @@
           <div class="top-banner__info">
              <h1 class="top-banner__title">Registration form as <span>student</span></h1>
              <p class="top-banner-text">sign up for develope, operate and check your work </p>
-             <form action="/action_page.php">
+             <form action="" method="POST">
               <div class="mean"> 
                 <div class ="fname">First Name</div>
                  <input type="text" id="fname" name="firstname" placeholder="Your name..">
@@ -34,9 +63,9 @@
                 <div class="mail">Email</div>
                   <input type="text" id="mail" name="email" placeholder="Your email..">
                 <div class="pass">Password</div>
-                  <input type="text" id="pass" name="password" placeholder="Enter password..">
+                  <input type="password" id="pass" name="password" placeholder="Enter password..">
                 <center>
-                    <input type="submit" value="Submit">
+                    <input type="submit" name="reg" value="Submit">
                 </center>
               </div>
             </form>

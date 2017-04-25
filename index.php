@@ -1,3 +1,31 @@
+<?
+require "orm.php";
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(isset($_POST['email'])){
+      $loginsql = "select * from users where email = '".$_POST['email']."'
+                    and password = '".md5($_POST['password'])."' ;";
+      $user = R::getAll($loginsql);
+      if($user){
+         session_start();
+        $_SESSION['email'] = $_POST['email'];
+        if($user[0]['type'] == 1){
+          header('Location: tstream.php');
+        }else{
+          header('Location: stream.php');
+        }
+      }else{
+        echo '<script> alert("Логин или пароль не правильный ") </script>';
+      }
+  }
+}
+function test_input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="ru-RU">
   <head>
@@ -7,15 +35,31 @@
     <meta name="keywords" content="">
     <link rel="stylesheet" type="text/css" href="static/fonts/fonts.css">
     <link rel="stylesheet" type="text/css" href="static/css/main2.css">
-    <title>Главная страница
-    </title>
+    <title>Главная страница</title>
+    <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
   </head>
   <body>
+  <div class="login-wrapper">
+    <div class="dologin">
+        <form action="" method="POST">
+          <div class="mean"> 
+            <img id="closelogin" src="static/img/content/close.png">
+            <div class ="labelname">Email</div>
+             <input type="text" id="fname" name="email" placeholder="Your email">
+            <div class="labelname" >Password</div>
+             <input type="password" id="lname" name="password" placeholder="Your password">
+            <center>
+                <input type="submit" value="Sign in">
+            </center>
+          </div>
+        </form>
+    </div>
+  </div>
     <div class="wrapper">
       <header>
         <div class="header">
           <div class="logo"><a href="#"><img src="static/img/general/logo.png"></a></div>
-          <div class="login"><a href="#"><img src="static/img/general/login.png"></a></div>
+          <div class="login"> <span> LOGIN </span> <img src="static/img/general/login.png"></div>
         </div>
       </header>
       <section class="tob-bg">
@@ -60,5 +104,15 @@
     <script src="static/js/jquery.js"></script>
     <script src="static/js/libs.min.js"></script>
     <script src="static/js/main.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $(".login").click(function(){
+                $(".login-wrapper").toggle();
+            });
+            $("#closelogin").click(function(){
+                $(".login-wrapper").toggle();
+            });
+        });
+    </script>
   </body>
 </html>

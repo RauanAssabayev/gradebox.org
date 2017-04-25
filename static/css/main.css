@@ -2,30 +2,22 @@ html {
   line-height: 1;
   font-size: 14px;
 }
-
 body {
   margin: 0;
+  min-width: 1400px !important; 
+  overflow: auto !important;
 }
-
-
 h1 {
   font-size: 2em;
   margin: 0.67em 0;
 }
-
 body {
   font-family: "MmrReg", Arial, sans-serif;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   margin: 0;
 }
-ul,
-li {
+ul,li {
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -37,12 +29,7 @@ a {
   text-decoration: none;
   color: #000;
 }
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
+audio,canvas,iframe,img,svg,video {
   vertical-align: middle;
 }
 textarea {
@@ -52,14 +39,10 @@ section {
   position: relative;
   margin-bottom: 70px;
 }
-input,
-select,
-button {
+input,select,button {
   outline: none;
 }
-*,
-*:before,
-*:after {
+*,*:before,*:after {
   box-sizing: border-box;
 }
 
@@ -132,17 +115,17 @@ footer {
 }
 .footer {
   position: relative;
-  width: 97%;
-  max-width: 750px;
-  margin-left: 400px;
+  width: 100%;
   padding: 39px 0 30px 0;
 }
 .footer-text {
+  width: 100%;
   font-size: 16px;
+  display: block;
   color: #fff;
   text-align: center;
 }
-input[type=text], select {
+input[type=text],input[type=password] , select {
     font-family: "MmrReg", Arial, sans-serif;
     width: 105%;
     padding: 15px 20px;
@@ -218,6 +201,14 @@ input[type=submit]:hover {
     border-right: 3px solid white;
     border-radius: 5px;
     background-color:#E8E8E8; 
+    cursor: pointer;
+  }
+  .activeitem{
+     background-color: #045084 !important;
+     color: white !important;
+  }
+  .activesubitem{
+    background-color: #04374C !important;
   }
   .maincontent{
     width: 800px;
@@ -226,8 +217,130 @@ input[type=submit]:hover {
     display: inline-block;
     background-color: #E8E8E8;
     border-radius: 10px;
-
   }
+.courses>ul{
+  display: block;
+  width: 320px;
+  margin: 15px auto;
+
+}
+.courses>ul>li{
+  height: 40px;
+    width: 160px;
+    text-align: center;
+    vertical-align: middle;
+    list-style: none;
+    float: left;
+    font-size: 22px;
+    background-color: #04507B;
+    padding: 15px 5px;
+    border-right: 3px solid white;
+    border-radius: 5px;
+    color: #E8E8E8;
+    cursor: pointer;
+}
+.courseitems{
+  clear: both;
+  width: 100%;
+  display: block;
+  padding-top: 20px;
+}
+.courseitems>ul>li{
+  width: 400px;
+  height: 50px;
+  background-color: white;
+  margin-top: 5px;
+  margin-right: auto;
+  margin-left: auto;
+}
+.addcourse{
+  display: none;
+}
+
+.courseitems>ul>li>span{
+  display: inline-block;
+  padding-top: 5px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+  height: 50px;
+  background-color: skyblue;
+  color: white;
+  font-size: 30px;
+}
+.courseitems>ul>li>p{
+  display: inline;
+  line-height: 50px;
+  text-align: center;
+  font-size: 22px;
+  height: 50px;
+  color: #0678be;
+}
+.courseitems>ul>li>img{
+  float: right;
+  margin-top: 5px;
+}
+
+.full-wrapper-student{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: none;
+}
+.addstudent{
+  width: 400px;
+  height: 220px;
+  margin:100px auto;
+  background-color: white;
+}
+.addstudent>input[type=text]{
+  width: 300px;
+  margin:10px 50px;
+  background-color: white;
+}
+.addstudent>center>input[type=submit]{
+   margin-left:0px;
+}
+.addstudent>img{
+  float: right;
+  top:10px;
+  right: 10px;
+}
+.addcourse{
+  width: 400px;
+  height: 400px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.tasks{
+    width: 400px;
+    margin: 30px auto;
+}
+.tasks>h2{
+  display: block;
+  font-family: "MmrBold", Arial, sans-serif;
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #064787;
+  text-align: center;
+}
+.tasks>textarea,select{
+  width: 100%;
+  display: block;
+}
+.tasks>select{
+  height: 40px;
+  padding:5px;
+}
+.tasks>textarea{
+  height: 100px;
+  padding: 5px;
+}
+.tasks>input[type=date]{
+  margin-top: 20px;
+}
 
 
 
